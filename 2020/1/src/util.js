@@ -6,7 +6,7 @@ function _multiply (array) {
   return sum;
 }
 
-const findTwoAndMultiply = (array, sum) => {
+function findTwoAndMultiply (array, sum) {
   let hashMap = {};
   let results = [];
   for (let i = 0; i < array.length; i++) {
@@ -16,24 +16,24 @@ const findTwoAndMultiply = (array, sum) => {
       hashMap[sum - array[i]] = array[i];
     }
   }
-  const product = _multiply(results);
-  return product;
+  return _multiply(results);
 };
 
-// @todo: actually solve
-const findThreeAndMultiply = (array, sum) => {
-  let hashMap = {};
+function findThreeAndMultiply (arr, target) {  
   let results = [];
-  for (let i = 0; i < array.length; i++) {
-    if (hashMap[array[i]]) {
-      results.push(hashMap[array[i]], array[i], array[i])
-    } else {
-      hashMap[sum - array[i]] = array[i];
+  for (let i = 0; i < arr.length; i++) { 
+    let final = target - arr[i];    
+    let map = {};
+    for (let j = i + 1; j < arr.length; j++) {
+      if (map[arr[j]]) {
+        results.push([arr[j], arr[i], map[arr[j]]]);
+      } else {
+        map[final - arr[j]] = arr[j];
+      }
     }
   }
-  const product = _multiply(results);
-  return product;
-};
+  return _multiply(...results);
+}
 
 module.exports = {
   findTwoAndMultiply,
