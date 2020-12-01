@@ -1,4 +1,7 @@
-function _multiply (array) {
+function _multiply(array) {
+  if (!array) {
+    throw new Error(`You must pass in an array of integers. Received ${array}`);
+  }
   let sum = 1;
   for (var i=0; i<array.length; i++) {
       sum = sum * array[i];
