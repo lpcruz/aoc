@@ -41,6 +41,11 @@ function validate(limits, value) {
   return true;
 }
 
+/**
+ * 
+ * @param {Object} data - The object containing the password information
+ * @param {*} value - The letter to check for
+ */
 function validatePosition(data, value) {
   if (!data) {
     throw new Error(`You must pass in a max and min limit. Received ${data}`);
