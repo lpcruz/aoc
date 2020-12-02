@@ -5,7 +5,7 @@ const {
   findThreeAndMultiply
 } = require('../src/util');
 
-describe('util', () => {
+describe('🎄 AOC - Day 1 utilities', () => {
   describe('_multiply', () => {
     it('should return a product when given an array of ints', () => {
       expect(_multiply([1, 2, 3])).toEqual(6);
