@@ -41,13 +41,46 @@ function validate(limits, value) {
   return true;
 }
 
+function validatePosition(data, value) {
+  if (!data) {
+    throw new Error(`You must pass in a max and min limit. Received ${data}`);
+  }
+  const info = {
+    letter: value,
+    max: data.max,
+    min: data.min,
+    password: data.password
+  };
+  const positions = _getPositions(info.password.join(""), info.letter);
+  if (positions.includes(info.max) && positions.includes(info.min)) {
+    return false;
+  }
+  if (positions.includes(info.max)) {
+    return true;
+  }
+  if (positions.includes(info.min)) {
+    return true;
+  }
+}
+
 function _parseString(string) {
   return string.replace(/[-:]/g,' ').split(' ');
+}
+
+function _getPositions(str, value) {
+  const indices = [];
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] === value) {
+      indices.push(i + 1);
+    }
+  }
+  return indices;
 }
 
 module.exports = {
   getOccurrence,
   validate,
+  validatePosition,
   format,
   _parseString
 }
