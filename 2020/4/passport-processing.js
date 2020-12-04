@@ -11,4 +11,11 @@ for (const line of lines) {
   if (p.isValid()) valid++
 }
 
+valid = 0;
+
+for (const line of lines) {
+  const p = new Passport(line);
+  if (p.isFullyValid()) valid++
+}
+
 console.log(valid);
